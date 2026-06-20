@@ -27,6 +27,11 @@ app = FastAPI()
 
 @app.post("/fetch_transcript")
 async def get_trasncript(request: VideoIdRequest):
-    transcript =  fetch_transcript(request.video_id) 
+    try:
+        print("here, all good")
+        transcript =  fetch_transcript(request.video_id) 
+        print("still good")
+    except Exception as e:
+        print(f"error: {str(e)}")
     return transcript
 
